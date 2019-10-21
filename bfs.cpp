@@ -4,6 +4,28 @@
 
 using namespace std;
 
+int BFS(vector<vector<int>>&v, int level[],int visited[]){
+    int mx = 0;
+    queue<int>q;
+    q.push(1);
+    visited[1] = 1;
+    level[1] = 1;
+    while(!q.empty()){
+        int cur=q.front();
+        // cout<<cur<<endl;
+        q.pop();
+        for(int i=0; i<v[cur].size(); i++){
+            if(visited[v[cur][i]]==0){
+                q.push(v[cur][i]);
+                visited[v[cur][i]]=1;
+                level[v[cur][i]] = level[cur]+1;
+                mx = max(mx,level[v[cur][i]]);
+            }
+        }
+    }
+    return mx;
+}
+
 
 
 int main(){
