@@ -5,3 +5,4 @@ these algos are the basic programs which requires some editing according to part
 
 1. DFS
 2. BFS
+3. Merge sort
