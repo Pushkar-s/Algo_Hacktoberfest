@@ -2,6 +2,14 @@
 using namespace std;
 
 // code for merge sort
+
+void show_array(int arr[], int n){
+    for(int i=0; i<n; i++){
+      cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
 void merge(int arr[],int start,int end){
     int middle = (start+end)/2;
     int i=start,j = middle+1,k=0;
