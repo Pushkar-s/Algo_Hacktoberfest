@@ -67,3 +67,18 @@ int find(int T, vector <int> maxPoints, vector <int> pointsPerMinute, vector <in
     
     return res;
 } 
+
+void solve() {
+    int n,t; cin >> n >> t;
+    vector < int > m(n),d(n),rt(n);
+    rep (i,n) cin >> m[i];
+    rep (i,n) cin >> d[i];
+    rep (i,n) cin >> rt[i];
+    cout << find(t,m,d,rt) << endl;
+}
+
+signed main(){
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int t; t=1;
+    while (t--) solve();
+}
