@@ -26,5 +26,12 @@ int main(){
     dp[i] = array[i] + max(dp[i-1],0);
     ans = max(dp[i],ans); 
   }
+  // KHADANES ALGO FOR K DELETIONS POSSIBLE JUST INITIALIZE K WITH (ALLOWED DELETIONS +1)
+  // EXAMPLE : if 1 deletions is allowed initialize k with 2;
+  // question:
+  // https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/
+  // explanation:
+  // https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/discuss/546447/on-2-state-dp-one-pass/494386
+  
 
 }
