@@ -22,3 +22,21 @@ struct UFDS {
 		return true;
 	}
 };
+
+
+int main() {
+	int n, m, x, y, k, ans = 1;
+	scanf("%d %d", &n, &m);
+	UFDS dim(m + 1);
+	vector<int> opt;
+	for (int i = 0; i < n; ++i) {
+		scanf("%d", &k);
+		if (k == 1) scanf("%d", &x), y = 0;
+		else scanf("%d %d", &x, &y);
+		if (dim.union_set(x, y)) opt.push_back(i + 1);
+	}
+	for (int i = 0; i < opt.size(); ++i) ans = ans * 2 % mod;
+	printf("%d %lu\n", ans, opt.size());
+	for (int i: opt) printf("%d ", i);
+	return 0;
+}
