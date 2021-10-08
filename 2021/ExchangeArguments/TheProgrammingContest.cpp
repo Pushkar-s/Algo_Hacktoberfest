@@ -34,3 +34,36 @@ using namespace std;
     now we will solve the problem of choosing the problems which can be done by dp similar to knapsack.
 
 */
+
+// const int inf = 1e9 + 7;
+int find(int T, vector <int> maxPoints, vector <int> pointsPerMinute, vector <int> requiredTime) {
+    int n = maxPoints.size();
+    vector < pair < int , pair < int , int > > > arr;
+    for (int i=0; i<n; i++) {
+        if (requiredTime[i] <= T) {
+            arr.push_back(make_pair(maxPoints[i],make_pair(pointsPerMinute[i],requiredTime[i])));
+        }
+    }
+    sort(arr.begin(),arr.end(),[](pair < int , pair < int , int > > a, pair < int , pair < int , int > > b){
+        return (a.second.first*b.second.second) >= (b.second.first*a.second.second);
+    }); 
+    n = arr.size();
+    // for (auto  e: arr) {
+    //     // cout << e.first << " " << e.second.first << " " << e.second.second << endl;
+    // }
+    vector < vector < int > > dp(n,vector < int > (T+1,0));
+    int res = 0;
+    for (int i=0; i<n; i++) {
+        int m = arr[i].first;
+        int d = arr[i].second.first;
+        int rt = arr[i].second.second;
+        for (int j=rt; j<=T; j++) {
+            dp[i][j] = max({(i>0&&j-rt>=0?dp[i-1][j-rt]:0)+ m - j*d, i>0?dp[i-1][j]:0,dp[i][j-rt]});
+            res = max(res,dp[i][j]);
+            if (dp[i][j] == 1295067296) cout << "hi" << endl;
+        }
+    }
+    // rep (i,n) cout << dp[i][0] << " " << dp[i][25] <<" "<< dp[i][50]  << " " << dp[i][75] << endl;
+    
+    return res;
+} 
