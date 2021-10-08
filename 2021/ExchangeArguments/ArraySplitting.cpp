@@ -29,3 +29,24 @@ two segments will give max ans [-1,-2] and [5,-4,8] = 1*(first) + 2*(second) = 1
     note while implementation: s[0] is compulsary so ans is s[0] + max(all suf[] except s[0]);
 
 */
+
+void solve() {
+    int n,k; cin >> n >> k; 
+    int arr[n]; rep (i,n) cin >> arr[i];
+    vector < int > ans;
+    int sum = 0;
+    repd (i,n) {
+        sum += arr[i];
+        if (i>0) ans.eb(sum);
+    }
+    sort(all(ans));
+    int res = 0;
+    rep (i,k-1) res += ans[n-2-i]; 
+    cout << res + sum << endl;
+}
+
+signed main(){
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int t; t=1;
+    while (t--) solve();
+}
