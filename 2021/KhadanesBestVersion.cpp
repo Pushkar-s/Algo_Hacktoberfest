@@ -32,6 +32,24 @@ int main(){
   // https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/
   // explanation:
   // https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/discuss/546447/on-2-state-dp-one-pass/494386
-  
+  int sum=0,best =0,index,n=arr.size();
+    int k=2;
+    int dp[n][k];
+    for(int i=0; i<n; i++){
+      for(int j=0; j<k; j++){
+          // max of (this one is deleted, considered);
+          dp[i][j] = max((i>0&&j>0)?dp[i-1][j-1]:0,
+                          arr[i]+max(0,max(
+                                          (i>0&&j>0)?dp[i-1][j-1]:0,
+                                          (i>0)?dp[i-1][j]:0
+                                          )
+                                    )
+                        );
+
+          dp[i][j] = max(dp[i-1][j-1],arr[i]+max(0,max(dp[i-1][j-1],dp[i-1][j])));
+          best = max(dp[i][j],best);
+      }		
+    }
+  cout<<best<<"\n";
 
 }
