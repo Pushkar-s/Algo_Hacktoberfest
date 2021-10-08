@@ -37,3 +37,26 @@ using namespace std;
 
 
 */
+
+int solve() {
+    int n; cin >> n; 
+    vector < int > a(n),b(n);
+    rep (i,n) cin >> a[i];
+    rep (i,n) cin >> b[i];
+    sort(all(a));
+    sort(b.rbegin(),b.rend());
+    int res = 0;
+    rep (i,n) {
+        res += (a[i]*b[i]);
+    }
+    return res;
+}
+
+signed main(){
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int t; cin >> t;
+    rep (i,t) {
+        cout << "Case #" << i+1 << ": "<< solve() << endl;
+    }
+}
+
